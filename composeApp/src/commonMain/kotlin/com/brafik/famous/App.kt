@@ -1,24 +1,44 @@
 package com.brafik.famous
 
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.unit.dp
-import famous.composeapp.generated.resources.*
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.brafik.famous.features.create.CreatePostScreen
+import com.brafik.famous.features.feed.FeedScreen
+import com.brafik.famous.features.login.LoginScreen
+import com.brafik.famous.features.paywall.PaywallScreen
+import com.brafik.famous.navigation.AppScreens
+import com.brafik.famous.navigation.LocalNavHost
+import com.brafik.famous.navigation.main.MainScreen
 import com.brafik.famous.theme.AppTheme
-import com.brafik.famous.theme.LocalThemeIsDark
-import kotlinx.coroutines.isActive
-import org.jetbrains.compose.resources.Font
-import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.resources.vectorResource
 
 @Composable
-internal fun App() = AppTheme { }
+internal fun App() = AppTheme {
+    FamousApp()
+}
+
+
+@Composable
+internal fun FamousApp(
+    navController: NavHostController = rememberNavController()
+) {
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentScreen = backStackEntry?.destination?.route ?: AppScreens.Login.title
+
+    CompositionLocalProvider(
+        LocalNavHost provides navController
+    ) {
+        NavHost(
+            navController,
+            startDestination = currentScreen
+        ) {
+            composable(route = AppScreens.Login.title) { LoginScreen() }
+            composable(route = AppScreens.Main.title) { MainScreen() }
+            composable(route = AppScreens.CreatePost.title) { CreatePostScreen() }
+            composable(route = AppScreens.Paywall.title) { PaywallScreen() }
+        }
+    }
+}
