@@ -55,6 +55,8 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.multiplatformSettings)
             implementation(libs.kotlinx.datetime)
+            implementation(libs.compose.navigation)
+            implementation(libs.compose.viewmodel)
         }
 
         commonTest.dependencies {
