@@ -1,4 +1,7 @@
 package com.brafik.famous.features.paywall
 
-class PaywallScreen {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun PaywallScreen() {
 }

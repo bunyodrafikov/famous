@@ -1,4 +1,6 @@
 package com.brafik.famous.navigation.main
 
-class Main {
-}
+import androidx.compose.runtime.Composable
+
+@Composable
+fun MainScreen() { }
