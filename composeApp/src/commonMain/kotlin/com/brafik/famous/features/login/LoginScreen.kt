@@ -5,6 +5,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.brafik.famous.features.login.models.LoginAction
+import com.brafik.famous.navigation.AppScreens
 import com.brafik.famous.navigation.LocalNavHost
 
 @Composable
@@ -19,6 +20,7 @@ fun LoginScreen(viewModel: LoginViewModel = viewModel { LoginViewModel() }) {
 
     when (viewAction) {
         LoginAction.OpenMainScreen -> {
+            externalNavHost.navigate(AppScreens.Main.title)
             viewModel.clearAction()
         }
         else -> { }

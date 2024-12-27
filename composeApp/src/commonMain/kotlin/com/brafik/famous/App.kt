@@ -36,7 +36,7 @@ internal fun FamousApp(
     ) {
         NavHost(
             navController,
-            startDestination = currentScreen
+            startDestination = AppScreens.Login.title
         ) {
             composable(route = AppScreens.Login.title) { LoginScreen() }
             composable(route = AppScreens.Main.title) { MainScreen() }

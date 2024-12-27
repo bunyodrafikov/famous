@@ -78,15 +78,15 @@ internal fun LoginView(
         }
 
         FTextField(viewState.email, stringResource(Res.string.login_email)) {
-            eventHandler(LoginEvent.EmailChanged(it))
+            eventHandler.invoke(LoginEvent.EmailChanged(it))
         }
 
         FTextField(viewState.password, stringResource(Res.string.login_password)) {
-            eventHandler(LoginEvent.PasswordChanged(it))
+            eventHandler.invoke(LoginEvent.PasswordChanged(it))
         }
 
         Row {
-            TextButton(onClick = {}) {
+            TextButton(onClick = { }) {
                 Text(
                     stringResource(Res.string.login_forgot_password),
                     color = FamousTheme.colors.primaryText
@@ -95,7 +95,7 @@ internal fun LoginView(
 
             Spacer(Modifier.weight(1f))
 
-            TextButton(onClick = {}) {
+            TextButton(onClick = { eventHandler.invoke(LoginEvent.LoginClicked) }) {
                 Text(
                     stringResource(Res.string.login_login),
                     color = FamousTheme.colors.primaryText
@@ -103,7 +103,7 @@ internal fun LoginView(
             }
         }
 
-        TextButton(onClick = {}) {
+        TextButton(onClick = { eventHandler.invoke(LoginEvent.SignUpClicked) }) {
             Text(
                 stringResource(Res.string.login_register),
                 color = FamousTheme.colors.tintColor
