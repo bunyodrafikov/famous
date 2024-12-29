@@ -20,7 +20,7 @@ fun LoginScreen(viewModel: LoginViewModel = viewModel { LoginViewModel() }) {
 
     when (viewAction) {
         LoginAction.OpenMainScreen -> {
-            externalNavHost.navigate(AppScreens.Main.title)
+            externalNavHost.navigate(AppScreens.Main.route)
             viewModel.clearAction()
         }
         else -> { }
