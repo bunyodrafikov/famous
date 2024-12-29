@@ -35,6 +35,9 @@ internal fun FamousApp(
             navController,
             startDestination = AppScreens.Splash.route
         ) {
+            composable(route = AppScreens.Splash.route) {
+                SplashScreen(navController = navController)
+            }
             composable(route = AppScreens.Login.route) { LoginScreen() }
             composable(route = AppScreens.Main.route) { MainScreen() }
             composable(route = AppScreens.CreatePost.route) { CreatePostScreen() }
