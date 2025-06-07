@@ -7,5 +7,6 @@ val darkPalette = FamousColors(
     primaryBackground = Color(0xFF141217),
     secondaryText = Color.White,
     secondaryBackground = Color(0xFF302938),
-    tintColor = Color(0xFFAB9EB8)
+    tintColor = Color(0xFFAB9EB8),
+    dividerColor = Color(0xFF473D54)
 )
