@@ -27,6 +27,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.brafik.famous.features.feed.FeedScreen
 import com.brafik.famous.navigation.AppScreens
 import com.brafik.famous.navigation.LocalNavHost
 import com.brafik.famous.theme.FamousTheme
@@ -48,7 +49,7 @@ fun MainScreen() {
             modifier = Modifier.padding(bottom = bottomNavHeight).fillMaxHeight(),
             startDestination = MainScreens.Home.route
         ) {
-            composable(MainScreens.Home.route) { Text("Hello, Home", color = FamousTheme.colors.tintColor) }
+            composable(MainScreens.Home.route) { FeedScreen() }
             composable(MainScreens.Subscriptions.route) { Text("Hello, Subscriptions", color = FamousTheme.colors.tintColor) }
             composable(MainScreens.Post.route) { Text("Hello, Post", color = FamousTheme.colors.tintColor) }
             composable(MainScreens.Inbox.route) { Text("Hello, Inbox", color = FamousTheme.colors.tintColor) }
