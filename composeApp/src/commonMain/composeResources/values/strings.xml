@@ -7,4 +7,11 @@
     <string name="login_forgot_password">Forgot Password?</string>
     <string name="login_login">Login</string>
     <string name="login_register">Don't have an account? Sign up.</string>
+
+    <string name="profile_title">Profile</string>
+    <string name="profile_subscribe">Subscribe</string>
+    <string name="profile_subscribed">Subscribed</string>
+    <string name="profile_videos">Videos</string>
+    <string name="profile_playlists">Playlists</string>
+    <string name="profile_about">About</string>
 </resources>
