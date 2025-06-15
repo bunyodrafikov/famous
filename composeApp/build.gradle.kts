@@ -11,23 +11,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.buildConfig)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
     jvmToolchain(17)
-    androidTarget {
-        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-    }
+
+    androidTarget {}
 
     jvm()
-
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
 
     listOf(
         iosX64(),
@@ -59,13 +52,10 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.compose.navigation)
             implementation(libs.compose.viewmodel)
-        }
 
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.uiTest)
-            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.room.runtime)
+            implementation(libs.room.sqlite)
+            implementation(libs.room.sqlite.bundled)
         }
 
         androidMain.dependencies {
@@ -84,7 +74,6 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
-
     }
 }
 
@@ -99,15 +88,7 @@ android {
         applicationId = "com.brafik.famous.androidApp"
         versionCode = 1
         versionName = "1.0.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-}
-
-//https://developer.android.com/develop/ui/compose/testing#setup
-dependencies {
-    androidTestImplementation(libs.androidx.uitest.junit4)
-    debugImplementation(libs.androidx.uitest.testManifest)
 }
 
 compose.desktop {
@@ -133,7 +114,15 @@ compose.desktop {
     }
 }
 
-buildConfig {
-    // BuildConfig configuration here.
-    // https://github.com/gmazzo/gradle-buildconfig-plugin#usage-in-kts
+dependencies {
+    add("kspCommonMainMetadata", libs.room.compiler)
+    add("kspAndroid", libs.room.compiler)
+    add("kspIosX64", libs.room.compiler)
+    add("kspIosArm64", libs.room.compiler)
+    add("kspIosSimulatorArm64", libs.room.compiler)
+    add("kspJvm", libs.room.compiler)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
