@@ -48,6 +48,7 @@ kotlin {
             implementation(libs.ktor.client.serialization)
             implementation(libs.ktor.client.logging)
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.uuid)
             implementation(libs.multiplatformSettings)
             implementation(libs.kotlinx.datetime)
             implementation(libs.compose.navigation)
