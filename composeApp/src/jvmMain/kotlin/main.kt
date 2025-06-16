@@ -6,6 +6,9 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import java.awt.Dimension
 import com.brafik.famous.App
+import com.brafik.famous.core.database.getRoomDatabase
+import com.brafik.famous.core.di.InjectProvider
+import core.database.getDatabaseBuilder
 
 fun main() = application {
     Window(
@@ -14,6 +17,10 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
     ) {
         window.minimumSize = Dimension(350, 600)
+        val appDatabase = getRoomDatabase(
+            getDatabaseBuilder()
+        )
+        InjectProvider.addDependency("database", appDatabase)
         App()
     }
 }
