@@ -28,7 +28,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.brafik.famous.features.feed.FeedScreen
+import com.brafik.famous.features.feed.presentation.FeedScreen
 import com.brafik.famous.features.profile.ui.ProfileScreen
 import com.brafik.famous.navigation.AppScreens
 import com.brafik.famous.navigation.LocalNavHost
