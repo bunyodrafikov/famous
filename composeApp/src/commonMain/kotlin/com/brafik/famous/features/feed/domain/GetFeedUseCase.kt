@@ -16,7 +16,7 @@ class GetFeedUseCase(
 ) {
     suspend fun execute(): List<Feed> {
         val token = authLocalDataSource.checkToken()
-        val favourites = favouriteLocalDataSource.getFavouritePosts()
+        val favourites = favouriteLocalDataSource.getFavouritePostIds()
         val feed = feedRemoteDataSource.fetchNextChunk(token, "", emptyList())
             .map { it.mapToFeed(favourites.contains(it.postId)) }
         return feed

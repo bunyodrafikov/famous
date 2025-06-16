@@ -10,7 +10,7 @@ interface FavouriteLocalDataSource {
 class FavouriteRoomDataSource(
     private val database: AppDatabase = InjectProvider.getDatabase()
 ): FavouriteLocalDataSource {
-    override suspend fun getFavouritePostId(): List<String> {
+    override suspend fun getFavouritePostIds(): List<String> {
         return emptyList()
     }
 }
