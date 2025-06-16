@@ -8,8 +8,5 @@ import platform.Foundation.NSHomeDirectory
 
 fun getDatabaseBuilder(): RoomDatabase.Builder<AppDatabase> {
     val dbFilePath = NSHomeDirectory() + "/$dbFileName"
-    return Room.databaseBuilder<AppDatabase>(
-        dbFilePath,
-        factory = { AppDatabase::class.instantiateImpl() }
-    )
+    return Room.databaseBuilder<AppDatabase>(dbFilePath)
 }
